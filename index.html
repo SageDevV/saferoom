@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sage Room</title>
+  <meta
+    name="description"
+    content="Aplicação terapêutica web inspirada em safe rooms, com mensagens motivacionais, check-in emocional e exercícios de regulação."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/icons/sage-room-icon.ico">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/sage-room-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="safe-room-scene" aria-hidden="true">
+    <div class="room-structure">
+      <div class="wall-panels"></div>
+      <div class="pipe-network"></div>
+      <div class="hanging-cable cable-a"></div>
+      <div class="hanging-cable cable-b"></div>
+      <div class="warning-lamp lamp-left"></div>
+      <div class="warning-lamp lamp-right"></div>
+      <div class="dust-volume"></div>
+      <div class="floor-sheen"></div>
+      <div class="ceiling-trusses"></div>
+      <div class="wall-patina"></div>
+      <div class="rust-streaks"></div>
+      <div class="condensation-mist"></div>
+    </div>
+  </div>
+  <div class="ambient">
+    <div class="ambient-glow ambient-glow-a" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow-b" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="edge-frame" aria-hidden="true">
+    <span class="edge-strip edge-top"></span>
+    <span class="edge-strip edge-right"></span>
+    <span class="edge-strip edge-bottom"></span>
+    <span class="edge-strip edge-left"></span>
+    <span class="corner-plate corner-tl"></span>
+    <span class="corner-plate corner-tr"></span>
+    <span class="corner-plate corner-bl"></span>
+    <span class="corner-plate corner-br"></span>
+    <span class="edge-rivets rivets-top"></span>
+    <span class="edge-rivets rivets-right"></span>
+    <span class="edge-rivets rivets-bottom"></span>
+    <span class="edge-rivets rivets-left"></span>
+    <span class="warning-mark warning-left"></span>
+    <span class="warning-mark warning-right"></span>
+    <span class="edge-grime"></span>
+  </div>
+  <main class="shell">
+    <section class="hero panel reveal-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Sage Room // Safe Session</p>
+        <h1>Refúgio rápido para regular mente e corpo.</h1>
+        <p class="lead">
+          Check-in, suporte e estabilização em poucos passos.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" data-scroll-target="#checkin">Iniciar check-in</button>
+          <button class="secondary" id="new-message">Nova mensagem</button>
+          <button class="secondary alert" id="emergency-protocol">Protocolo de emergência</button>
+        </div>
+        <div class="audio-controls">
+          <button class="secondary" id="toggle-music" aria-pressed="false">Tocar trilha</button>
+          <label class="volume-label" for="music-volume">Volume</label>
+          <input id="music-volume" type="range" min="0" max="100" value="45">
+        </div>
+      </div>
+      <div class="safe-room-window hero-window" aria-hidden="true">
+        <div class="city-chaos">
+          <div class="storm-clouds"></div>
+          <div class="lightning-sheet"></div>
+          <div class="horizon-haze"></div>
+          <div class="antenna-grid"></div>
+          <div class="drone-lights">
+            <span class="drone d1"></span>
+            <span class="drone d2"></span>
+            <span class="drone d3"></span>
+          </div>
+          <div class="skyline skyline-far">
+            <span class="tower tf1"></span>
+            <span class="tower tf2"></span>
+            <span class="tower tf3"></span>
+            <span class="tower tf4"></span>
+            <span class="tower tf5"></span>
+            <span class="tower tf6"></span>
+          </div>
+          <div class="skyline skyline-mid">
+            <span class="tower tm1"></span>
+            <span class="tower tm2"></span>
+            <span class="tower tm3"></span>
+            <span class="tower tm4"></span>
+            <span class="tower tm5"></span>
+            <span class="tower tm6"></span>
+            <span class="tower tm7"></span>
+          </div>
+          <span class="building b1"></span>
+          <span class="building b2"></span>
+          <span class="building b3"></span>
+          <span class="building b4"></span>
+          <span class="building b5"></span>
+          <span class="building b6"></span>
+          <span class="building b7"></span>
+          <span class="building b8"></span>
+          <span class="distant-light d9"></span>
+          <span class="distant-light d10"></span>
+          <span class="distant-light d11"></span>
+          <span class="blast-zone blast-a"></span>
+          <span class="blast-zone blast-b"></span>
+          <div class="street-lights"></div>
+          <div class="traffic-flow"></div>
+          <div class="riot-flare"></div>
+          <div class="ember-field"></div>
+          <div class="fog-banks"></div>
+          <div class="siren-sweep"></div>
+          <div class="smoke-columns"></div>
+          <div class="tracer-fire"></div>
+          <div class="blackout-grid"></div>
+          <div class="ash-fall"></div>
+          <div class="helicopter heli-a">
+            <span class="heli-cockpit"></span>
+            <span class="heli-door"></span>
+            <span class="heli-skid heli-skid-front"></span>
+            <span class="heli-skid heli-skid-back"></span>
+            <span class="heli-tail-rotor"></span>
+            <span class="heli-beacon"></span>
+            <span class="heli-navlight nav-red"></span>
+            <span class="heli-navlight nav-green"></span>
+            <span class="heli-searchcone"></span>
+          </div>
+          <div class="helicopter heli-b">
+            <span class="heli-cockpit"></span>
+            <span class="heli-door"></span>
+            <span class="heli-skid heli-skid-front"></span>
+            <span class="heli-skid heli-skid-back"></span>
+            <span class="heli-tail-rotor"></span>
+            <span class="heli-beacon"></span>
+            <span class="heli-navlight nav-red"></span>
+            <span class="heli-navlight nav-green"></span>
+            <span class="heli-searchcone"></span>
+          </div>
+          <div class="debris-stream"></div>
+          <div class="window-rain"></div>
+          <div class="searchlight"></div>
+          <div class="smoke-layer"></div>
+          <div class="heat-distortion"></div>
+          <div class="fire-glow"></div>
+        </div>
+        <div class="interior-reflection"></div>
+        <div class="glass-frost"></div>
+        <div class="glass-speckles"></div>
+        <div class="glass-scratches"></div>
+        <div class="condensation-rim"></div>
+        <div class="glass-drips">
+          <span class="drip g1"></span>
+          <span class="drip g2"></span>
+          <span class="drip g3"></span>
+          <span class="drip g4"></span>
+          <span class="drip g5"></span>
+          <span class="drip g6"></span>
+        </div>
+        <div class="glass-cracks" aria-hidden="true">
+          <span class="crack c1"></span>
+          <span class="crack c2"></span>
+          <span class="crack c3"></span>
+          <span class="crack c4"></span>
+        </div>
+        <div class="frame-wear"></div>
+        <div class="frame-bolts" aria-hidden="true">
+          <span class="bolt btop1"></span>
+          <span class="bolt btop2"></span>
+          <span class="bolt btop3"></span>
+          <span class="bolt btop4"></span>
+          <span class="bolt bleft1"></span>
+          <span class="bolt bleft2"></span>
+          <span class="bolt bright1"></span>
+          <span class="bolt bright2"></span>
+          <span class="bolt bbot1"></span>
+          <span class="bolt bbot2"></span>
+        </div>
+        <div class="window-bulkhead" aria-hidden="true">
+          <span class="bulkhead-bar bulkhead-top"></span>
+          <span class="bulkhead-bar bulkhead-bottom"></span>
+          <span class="bulkhead-bar bulkhead-left"></span>
+          <span class="bulkhead-bar bulkhead-right"></span>
+        </div>
+        <div class="window-leds" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <aside class="status-card">
+        <div class="status-light"></div>
+        <p class="status-label">Integridade da sala</p>
+        <p class="status-value" id="room-integrity">47%</p>
+        <p class="status-mini-label">Clima emocional</p>
+        <p class="status-subvalue" id="emotional-status">Calmo</p>
+        <p class="status-detail" id="message-text" aria-live="polite">
+          Um passo seguro por vez.
+        </p>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="panel reveal-panel collapsible-card" id="checkin">
+        <div class="panel-heading">
+          <p class="eyebrow">Check-in</p>
+          <h2>Estado atual</h2>
+        </div>
+        <div class="mood-meter" role="radiogroup" aria-label="Nível emocional">
+          <button class="mood-chip active" data-mood="calmo" data-level="1">Calmo</button>
+          <button class="mood-chip" data-mood="vigilante" data-level="2">Vigilante</button>
+          <button class="mood-chip" data-mood="sobrecarregado" data-level="3">Sobrecarregado</button>
+          <button class="mood-chip" data-mood="exausto" data-level="4">Exausto</button>
+        </div>
+        <p class="checkin-response" id="checkin-response" aria-live="polite">
+          Estado lido. Siga no ritmo.
+        </p>
+        <div class="suggestion-box">
+          <p class="suggestion-label">Sugestão principal</p>
+          <p id="suggestion-text" aria-live="polite">Água + respiração lenta por 1 minuto.</p>
+        </div>
+      </article>
+
+      <article class="panel reveal-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Ritual breve</p>
+          <h2>Reentrada</h2>
+        </div>
+        <ul class="ritual-list" id="ritual-list">
+          <li><label><input type="checkbox"> Relaxar os ombros por 10 segundos</label></li>
+          <li><label><input type="checkbox"> Desencostar a língua do céu da boca</label></li>
+          <li><label><input type="checkbox"> Nomear o que estou sentindo sem julgamento</label></li>
+          <li><label><input type="checkbox"> Escolher uma única prioridade para agora</label></li>
+        </ul>
+        <p class="ritual-progress" id="ritual-progress" aria-live="polite">0 de 4 etapas concluídas.</p>
+      </article>
+
+      <article class="panel breath-panel reveal-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Respiração guiada</p>
+          <h2>Ciclo respiratório</h2>
+        </div>
+        <div class="breath-orb" id="breath-orb">
+          <span id="breath-phase">Preparar</span>
+        </div>
+        <p class="breath-timer" id="breath-timer">4 segundos</p>
+        <button class="primary ghost" id="toggle-breath">Iniciar ciclo</button>
+      </article>
+
+      <article class="panel journal-panel reveal-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Registro rápido</p>
+          <h2>Registro</h2>
+        </div>
+        <textarea id="journal-input" rows="5" placeholder="Escreva uma preocupação, um medo ou algo que você não quer carregar sozinho agora."></textarea>
+        <div class="journal-actions">
+          <button class="secondary" id="save-note">Salvar nota</button>
+          <button class="secondary" id="clear-note">Limpar</button>
+        </div>
+        <p class="journal-status" id="journal-status" aria-live="polite">Nenhuma nota salva nesta sessão.</p>
+      </article>
+
+      <article class="panel reveal-panel command-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Console da sala</p>
+          <h2>Ação rápida</h2>
+        </div>
+        <p class="console-text" id="console-text">
+          Escolha o próximo protocolo.
+        </p>
+        <div class="command-grid" id="command-grid">
+          <button class="command-button" data-command="ground">Aterrar o corpo</button>
+          <button class="command-button" data-command="focus">Recuperar foco</button>
+          <button class="command-button" data-command="release">Despressurizar</button>
+          <button class="command-button" data-command="contact">Pedir contato</button>
+        </div>
+        <div class="console-result" id="console-result" aria-live="polite">
+          Nenhum protocolo executado ainda.
+        </div>
+        <p class="command-hint">Atalhos: <kbd>N</kbd> nova mensagem, <kbd>B</kbd> respiração, <kbd>T</kbd> próxima transmissão.</p>
+      </article>
+
+      <article class="panel reveal-panel mission-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Missão do turno</p>
+          <h2>Meta curta</h2>
+        </div>
+        <p class="mission-title" id="mission-title">Reduzir o ruído interno em 3 passos.</p>
+        <div class="mission-meter">
+          <div class="mission-fill" id="mission-fill"></div>
+        </div>
+        <p class="mission-progress" id="mission-progress" aria-live="polite">0 de 3 ações concluídas.</p>
+        <button class="secondary" id="new-mission">Gerar nova missão</button>
+      </article>
+
+      <article class="panel reveal-panel save-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Terminal de Salvamento</p>
+          <h2>Checkpoint</h2>
+        </div>
+        <p class="save-wire">Fitas de tinta: <span id="ribbon-stock">2</span></p>
+        <p class="save-status" id="save-status" aria-live="polite">Nenhum checkpoint ativo.</p>
+        <p class="save-timestamp" id="save-timestamp">Último registro: --</p>
+        <div class="save-actions">
+          <button class="secondary" id="save-checkpoint">Salvar checkpoint</button>
+          <button class="secondary" id="load-checkpoint">Restaurar checkpoint</button>
+        </div>
+      </article>
+
+      <article class="panel reveal-panel itembox-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Item Box</p>
+          <h2>Recursos</h2>
+        </div>
+        <div class="itembox-grid">
+          <button class="item-button" data-item="herb">
+            Erva verde
+            <span class="item-stock" data-stock="herb">x2</span>
+          </button>
+          <button class="item-button" data-item="spray">
+            Spray de primeiros socorros
+            <span class="item-stock" data-stock="spray">x1</span>
+          </button>
+          <button class="item-button" data-item="flash">
+            Granada de luz
+            <span class="item-stock" data-stock="flash">x1</span>
+          </button>
+        </div>
+        <p class="item-result" id="item-result" aria-live="polite">Nenhum item utilizado neste turno.</p>
+      </article>
+
+      <article class="panel reveal-panel radio-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">NPC / Rádio Terapêutico</p>
+          <h2>Rádio terapêutico</h2>
+        </div>
+        <p class="radio-status">
+          Estado do canal: <span id="radio-channel-state">Conectado</span>
+        </p>
+        <div class="radio-transmission">
+          <p class="radio-speaker">Operadora Helena:</p>
+          <p class="radio-message" id="radio-message" aria-live="polite">Respire comigo. Você está em uma zona segura.</p>
+        </div>
+        <div class="radio-choices" id="radio-choices">
+          <button class="radio-choice" data-choice="ground">Posso aterrar agora.</button>
+          <button class="radio-choice" data-choice="pace">Estou acelerado(a).</button>
+          <button class="radio-choice" data-choice="support">Preciso de apoio humano.</button>
+        </div>
+        <p class="radio-feedback" id="radio-feedback" aria-live="polite">Selecione uma resposta para continuar o contato.</p>
+        <button class="secondary" id="radio-next">Próxima transmissão</button>
+      </article>
+
+      <article class="panel reveal-panel sector-panel collapsible-card">
+        <div class="panel-heading">
+          <p class="eyebrow">Mapa da Instalação</p>
+          <h2>Setores</h2>
+        </div>
+        <div class="sector-grid">
+          <button class="sector-node" data-sector="corredor-leste">Corredor Leste</button>
+          <button class="sector-node" data-sector="arquivo">Sala de Arquivo</button>
+          <button class="sector-node" data-sector="enfermaria">Enfermaria</button>
+          <button class="sector-node" data-sector="deposito">Depósito</button>
+        </div>
+        <p class="sector-status" id="sector-status" aria-live="polite">0 de 4 setores estabilizados.</p>
+      </article>
+    </section>
+
+    <section class="panel support-panel reveal-panel">
+      <div class="panel-heading">
+        <p class="eyebrow">Protocolos de apoio</p>
+        <h2>Protocolos diretos</h2>
+      </div>
+      <div class="support-grid">
+        <article class="support-card">
+          <h3>Estabilizar o corpo</h3>
+          <p>Pés no chão, mãos apoiadas e expiração longa por 60 segundos.</p>
+        </article>
+        <article class="support-card">
+          <h3>Reduzir estímulo</h3>
+          <p>Afaste telas, diminua luzes duras e interrompa uma fonte de ruído.</p>
+        </article>
+        <article class="support-card">
+          <h3>Pedir suporte</h3>
+          <p>Envie uma mensagem curta: “Hoje estou no limite, preciso de presença.”</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel reveal-panel room-panel">
+      <div class="panel-heading">
+        <p class="eyebrow">Leitura da safe room</p>
+        <h2>A sala responde ao seu cuidado.</h2>
+      </div>
+      <div class="room-grid">
+        <div class="room-meter-card">
+          <p class="status-label">Estabilidade da sala</p>
+          <div class="room-meter">
+            <div class="room-meter-fill" id="room-meter-fill"></div>
+          </div>
+          <p class="room-meter-label" id="room-meter-label" aria-live="polite">47%</p>
+          <p class="biohazard-label" id="biohazard-label" aria-live="polite">Nível de bio-risco: Moderado</p>
+        </div>
+        <div class="room-log" id="room-log" role="log" aria-live="polite" aria-relevant="additions">
+          <p>Log inicial: abrigo carregado com sucesso.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="safe-room-audio" src="saferoom.mp3" loop preload="auto"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
